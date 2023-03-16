@@ -5,7 +5,7 @@ metadata:
     service: backend-feed
   name: backend-feed
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       service: backend-feed
@@ -56,12 +56,12 @@ spec:
               key: POSTGRES_HOST
         - name: POSTGRES_PASSWORD
           valueFrom:
-            secretKeyRef:
+            configMapKeyRef:
               name: env-secret
               key: POSTGRES_PASSWORD
         - name: POSTGRES_USERNAME
           valueFrom:
-            secretKeyRef:
+            configMapKeyRef:
               name: env-secret
               key: POSTGRES_USERNAME      
         volumeMounts:
